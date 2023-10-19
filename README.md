@@ -8,6 +8,14 @@ Terraform scripts for deploying lambda for de-registering load balancer targets 
 
 A deadletter SQS queue is created for failed Lambda executions.
 
+## UPDATE - February 2023: NO LONGER REQUIRED
+
+As of February 2023, Amazon ECS will now deregister your task running on Fargate Spot, if it receives a spot termination notice, before issuing a SIGTERM message to inform the task that it needs to stop. This improvement helps you manage spot interruption of tasks running on the Fargate Spot capacity provider more safely. 
+
+This means that you no longer need to deploy a Lambda like this.
+
+Please see https://aws.amazon.com/about-aws/whats-new/2023/02/amazon-elastic-container-service-accuracy-service-load-balancing/ for more details.
+
 ### Overview
 
 All commands are defined in `MakeFile`.
